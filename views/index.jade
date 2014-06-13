@@ -1,0 +1,52 @@
+extends layout
+
+block content
+  div(class='container' ng-controller="requestForm")
+    div(class='row')
+      div(class='col-md-4')
+      div(class='col-md-4')
+        div(class="btn-group")
+          label(class="btn btn-primary" ng-model="radioModel" style='margin-top : 20px;' btn-radio="'arr'") Arrivals
+          label(class="btn btn-primary" ng-model="radioModel" style='margin-top : 20px;' btn-radio="'dep'") Departures
+          input(type ="text" class="form-control" style='margin-top : 10px; text-align: center' ng-model="iata" placeholder="Airport IATA code")
+          input(type ="text" class="form-control" style='margin-top : 10px; text-align: center' ng-model="code" placeholder="Airline Code (optional)")
+          button(ng-click="post(construct())" class="btn btn-primary btn-lg btn-block" style='margin-top : 10px;') Submit
+      div(class='col-md-4')
+    div(class='row' style='margin-top : 10px;')
+      table(class="table" ng-show="airplanesWithoutCarrierCode")
+        tr
+          th Destination
+          th Flight
+          th Airline 
+          th {{details.type}} Schedule (Actual)
+          th Gate
+          th Status
+        tr(ng-repeat="airplane in airplanesWithoutCarrierCode | orderBy:['time', 'date']")
+          td  {{airplane.destName}}
+          td
+            b {{airplane.flightNumber}} 
+            em {{airplane.codesharesStr}}   
+          td  {{airplane.airlineName}}
+          td  {{airplane.time}} 
+          td  {{airplane.gate}}
+          td  {{airplane.status}} 
+      table(class="table" ng-show="airplanesWithCarrierCode")  
+        tr
+          th Date
+          th Destination
+          th Flight
+          th {{details.type}} Schedule (Actual)
+          th Gate
+          th Status  
+        tr(ng-repeat="airplane in airplanesWithCarrierCode | orderBy:['date','time']")
+          td  {{airplane.date}}
+          td  {{airplane.destName}}
+          td
+            b {{airplane.flightNumber}} 
+            em {{airplane.codesharesStr}}   
+          td  {{airplane.time}} 
+          td  {{airplane.gate}}
+          td  {{airplane.status}} 
+      
+
+

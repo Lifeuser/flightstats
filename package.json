@@ -1,0 +1,15 @@
+{
+  "name": "flights",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "~4.2.0",
+    "body-parser": "~1.0.0",
+    "jade": "~1.3.0",
+    "async": "~0.9.0",
+    "request" : "2.36.0"
+  }
+}
