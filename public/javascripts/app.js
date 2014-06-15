@@ -24,7 +24,8 @@
 
   //Form controller
   airport.controller('requestForm', function($scope, $http) {
-
+    $scope.message = '0';
+    $scope.radioModel = 'arr';
     $scope.airplanesWithoutCarrierCode = [];
     $scope.airplanesWithCarrierCode = [];
     $scope.airlines = {};
@@ -35,6 +36,7 @@
 
     // Function that creates new dataObject
     $scope.construct = function() {
+      $scope.message = '1';
       if ($scope.radioModel === 'arr'){
         $scope.details.type = 'Arrival';
       } else {
@@ -77,6 +79,18 @@
 
     $scope.done = function(id) {
       $http.post('/done', {id:id}).
+      success(function(data) {
+        $scope.kill(id);
+        $scope.message = '0';
+        $scope.prepareResults(data);
+      }).
+      error(function(data, status, headers, config) {
+        console.log(headers);
+      });
+    }
+
+    $scope.kill = function(id) {
+      $http.post('/kill', {id:id}).
       success(function(data) {
         $scope.prepareResults(data);
       }).

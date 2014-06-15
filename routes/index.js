@@ -23,4 +23,10 @@ router.post('/done', function(req,res) {
   res.status(200).json(fsRequest.getResultsById(req.body.id));
 })
 
+router.post('/kill', function(req,res) {
+  fsRequest.killById(req.body.id);
+  res.send(200);
+})
+
+
 module.exports = router;

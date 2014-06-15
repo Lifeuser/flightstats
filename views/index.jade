@@ -6,11 +6,12 @@ block content
       div(class='col-md-4')
       div(class='col-md-4')
         div(class="btn-group")
-          label(class="btn btn-primary" ng-model="radioModel" style='margin-top : 20px;' btn-radio="'arr'") Arrivals
+          label(class="btn btn-primary active" ng-model="radioModel" style='margin-top : 20px;' btn-radio="'arr'") Arrivals
           label(class="btn btn-primary" ng-model="radioModel" style='margin-top : 20px;' btn-radio="'dep'") Departures
-          input(type ="text" class="form-control" style='margin-top : 10px; text-align: center' ng-model="iata" placeholder="Airport IATA code")
-          input(type ="text" class="form-control" style='margin-top : 10px; text-align: center' ng-model="code" placeholder="Airline Code (optional)")
-          button(ng-click="post(construct())" class="btn btn-primary btn-lg btn-block" style='margin-top : 10px;') Submit
+        input(type ="text" class="form-control" style='margin-top : 10px; text-align: center' ng-model="iata" placeholder="Airport IATA code")
+        input(type ="text" class="form-control" style='margin-top : 10px; text-align: center' ng-model="code" placeholder="Airline Code (optional)")
+        button(ng-click="post(construct())" class="btn btn-primary btn-lg btn-block" style='margin-top : 10px;') Submit
+        div(class='alert alert-info' style='margin-top : 10px' ng-show='message') Your request has been sent. Waiting for results...
       div(class='col-md-4')
     div(class='row' style='margin-top : 10px;')
       table(class="table" ng-show="airplanesWithoutCarrierCode")
