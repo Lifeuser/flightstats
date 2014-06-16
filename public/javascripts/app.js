@@ -44,6 +44,8 @@
       }
       if($scope.code) {
         $scope.details.carrierCode = true;
+      } else {
+        $scope.details.carrierCode = false;
       }
       var dataObject = new DataObject($scope.radioModel, $scope.iata, $scope.code);
       return dataObject;
